@@ -5,9 +5,9 @@ services:
     image: ramsrib/pgvector:16
     restart: always
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Lu.ik!*u2c*VCZFGUWZVmsdWyb6HqK
+      POSTGRES_DB: ${DB_NAME:-postgres}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -25,9 +25,9 @@ services:
       - db
     environment:
       - DB_HOST=db
-      - DB_NAME=postgres
-      - DB_USER=postgres
-      - DB_PASSWORD=Lu.ik!*u2c*VCZFGUWZVmsdWyb6HqK
+      - DB_NAME=${DB_NAME:-postgres}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD}
       - DB_PORT=5432
 
   frontend:
